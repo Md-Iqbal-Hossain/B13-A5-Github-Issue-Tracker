@@ -25,7 +25,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body class="bg-[#F8FAFC] font">
+<body class="bg-[#F8FAFC] font min-h-screen">
 
     <!-- navbar -->
     <div class="navbar bg-base-100 shadow-sm px-20">
@@ -47,7 +47,55 @@
         <button class="btn btn-primary ml-4"><i class="fa-solid fa-plus"></i>New Issue</button>
     </div>
 
-    <p>hello</p>
+    <!-- button bar  -->
+    <section class="">
+        <div class="bg-white w-10/12 mx-auto mt-12 p-6 flex items-center rounded-xl space-x-3">
+            <button class="btn btn-primary w-[8vw]">All</button>
+            <button class="btn btn-primary w-[8vw]">Open</button>
+            <button class="btn btn-primary w-[8vw]">Closed</button>
+        </div>
+    </section>
+
+    <!-- stat bar -->
+    <section class="">
+        <div class="bg-white w-10/12 mx-auto mt-5 p-6 flex justify-between items-center rounded-xl space-x-3">
+            <!-- left side  -->
+            <div class="flex gap-2 items-center">
+                <!-- img  -->
+                <div class="h-10 w-10 bg-violet-100 rounded-full flex justify-center items-center">
+                    <img src="assets/Aperture.png" alt="">
+                </div>
+                <!-- total  -->
+                <div>
+                    <h3 class="font-bold">50 Issues</h3>
+                    <p class="font-extralight text-sm text-[#64748B]">Track and manage your project issues</p>
+                </div>
+
+            </div>
+
+            <!-- right side  -->
+            <div class="flex justify-center items-center gap-10">
+                <div class="flex gap-1 justify-center items-center">
+                    <i class="fa-solid fa-circle text-green-500"></i>
+                    <p>Open</p>
+                </div>
+
+                <div class="flex gap-1 justify-center items-center">
+                    <i class="fa-solid fa-circle text-violet-500"></i>
+                    <p>Closed</p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- card section  -->
+     <section class="">
+        <div class="bg-[#FBFBFB] w-10/12 mx-auto p-6 flex items-center rounded-xl space-x-3">
+            
+        </div>
+    </section>
+
 
     <script src="login.js"></script>
     <script src="script.js"></script>
