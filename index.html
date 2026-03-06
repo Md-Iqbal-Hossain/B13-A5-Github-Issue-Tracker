@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- tailwind + daisy UI  -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- stylesheet  -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- google font  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-[#F8FAFC] font">
+
+    <!-- login page  -->
+    <section class="min-h-screen flex items-center justify-center">
+        <div
+            class="h-[90vh] max-w-md w-full bg-white rounded-lg shadow-md flex flex-col justify-center p-8 gap-0.5 pb-10">
+
+            <!-- logo  -->
+            <div class="logo w-[200px] mx-auto flex justify-center">
+                <img src="assets/github-logo.png" alt="">
+            </div>
+
+            <!-- title -->
+            <div class="title mt-2">
+                <h3 class="text-2xl font-bold text-center">GitHub Issues Tracker</h3>
+                <p class="text-center text-[#64748B]">Sign in to manage your issues</p>
+            </div>
+
+            <!-- form  -->
+            <div class="form">
+                <div class="card bg-base-100 w-full max-w-sm shrink-0 ">
+                    <div class="card-body">
+                        <fieldset class="fieldset">
+                            <label class="label font-bold text-[#1F2937]">Username</label>
+                            <input id="input-user" maxlength="5" minlength="5" type="text" class="input w-full" placeholder="Enter Username" />
+                            <p class="text-blue-600">Default: admin</p>
+                            <label class="label font-bold text-[#1F2937]">Password</label>
+                            <input id="input-pass" maxlength="8" minlength="8" type="password" class="input w-full" placeholder="Enter Password" />
+                            <p class="text-blue-600">Default: admin</p>
+                            <button id="login-btn" class="btn btn-primary mt-4 rounded-md">Login</button>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+
+            <!-- horizontal line  -->
+            <div class="flex items-center max-w-sm w-full mx-auto">
+                <hr class="flex-grow border-gray-300">
+                <span class="mx-4 text-black">OR</span>
+                <hr class="flex-grow border-gray-300">
+            </div>
+
+            <!-- demo  -->
+            <div class="space-y-2">
+                <p class="text-xs text-center text-[#64748B]">Demo Credentials:</p>
+                <div class="bg-[#F8FAFC] py-4 rounded-xl">
+                    <p class="text-center text-sm"><span class="font-bold">Username: </span>admin</p>
+                    <p class="text-center text-sm"><span class="font-bold">Password: </span>admin123</p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <script src="login.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
