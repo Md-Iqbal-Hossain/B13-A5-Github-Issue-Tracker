@@ -1,10 +1,15 @@
 let currentTab = 'all';
+
+let allIssues = [];
+
 const tabActive = ['bg-primary', 'text-white'];
 const tabInactive = ['bg-white', 'text-[#64748B'];
 
 const issuesContainer = document.getElementById("issuesContainer");
 
 const loadingSpinner = document.getElementById("loadingSpinner");
+
+const issueCount = document.getElementById("issueCount");
 
 function switchTab(tab) {
     // console.log(tab);
@@ -21,14 +26,31 @@ function switchTab(tab) {
             tabName.classList.remove(...tabActive);
         }
     }
+
+    // filter issues
+    showLoading();
+
+    setTimeout(() => {
+
+    if (tab === 'all') {
+        displayIssues(allIssues);
+    }
+    else {
+        const filtered = allIssues.filter(issue => issue.status === tab);
+        displayIssues(filtered);
+    }
+
+    hideLoading();
+
+}, 300);
 }
 
-function showLoading(){
+function showLoading() {
     loadingSpinner.classList.remove('hidden');
     issuesContainer.innerHTML = '';
 }
 
-function hideLoading(){
+function hideLoading() {
     loadingSpinner.classList.add('hidden');
 }
 
@@ -39,11 +61,17 @@ async function loadIssues() {
     const data = await res.json();
     console.log(data);
 
+    allIssues = data.data;
     hideLoading();
-    displayIssues(data.data);
+    displayIssues(allIssues);
 }
 
 function displayIssues(issues) {
+    issuesContainer.innerHTML = '';
+
+    // update stat bar count
+    issueCount.innerText = `${issues.length} Issues`;
+
     issues.forEach(issue => {
         console.log(issue);
         const card = document.createElement('div');
