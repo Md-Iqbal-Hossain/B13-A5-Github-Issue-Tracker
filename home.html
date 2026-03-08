@@ -108,6 +108,54 @@
 
 
         </div>
+
+        <!-- issue details modal  -->
+        <dialog id="issue_detail_modal" class="modal">
+            <div class="modal-box">
+
+                <h3 id="modalTitle" class="text-lg font-bold"></h3>
+
+                <div class="flex items-center gap-2 mt-2">
+                    <div id="modalStatus" class="badge"></div>
+
+                    <span class="h-1.5 w-1.5 bg-gray-500 rounded-full"></span>
+
+                    <p id="modalAuthor"></p>
+
+                    <span class="h-1.5 w-1.5 bg-gray-500 rounded-full"></span>
+
+                    <p id="modalDate"></p>
+                </div>
+
+                <!-- labels -->
+                <div id="modalLabels" class="flex flex-wrap gap-2 mt-3"></div>
+
+                <!-- description -->
+                <p id="modalDescription" class="py-4"></p>
+
+                <!-- assignee + priority -->
+                <div class="bg-[#FBFBFB] flex justify-baseline space-x-16 p-6 rounded-xl">
+                    <div>
+                        <p>Assignee:</p>
+                        <h4 id="modalAssignee" class="font-bold"></h4>
+                    </div>
+
+                    <div>
+                        <p>Priority:</p>
+                        <div id="modalPriority" class="badge"></div>
+                    </div>
+                </div>
+
+                <div class="modal-action">
+                    <form method="dialog">
+                        <button class="btn btn-primary outline-none">Close</button>
+                    </form>
+                </div>
+
+            </div>
+        </dialog>
+
+
     </section>
 
     <!-- js  -->
