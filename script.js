@@ -4,6 +4,8 @@ const tabInactive = ['bg-white', 'text-[#64748B'];
 
 const issuesContainer = document.getElementById("issuesContainer");
 
+const loadingSpinner = document.getElementById("loadingSpinner");
+
 function switchTab(tab) {
     // console.log(tab);
     const tabs = ['all', 'open', 'closed'];
@@ -21,10 +23,23 @@ function switchTab(tab) {
     }
 }
 
+function showLoading(){
+    loadingSpinner.classList.remove('hidden');
+    issuesContainer.innerHTML = '';
+}
+
+function hideLoading(){
+    loadingSpinner.classList.add('hidden');
+}
+
 async function loadIssues() {
+    showLoading();
+
     const res = await fetch('https://phi-lab-server.vercel.app/api/v1/lab/issues');
     const data = await res.json();
     console.log(data);
+
+    hideLoading();
     displayIssues(data.data);
 }
 
@@ -32,7 +47,12 @@ function displayIssues(issues) {
     issues.forEach(issue => {
         console.log(issue);
         const card = document.createElement('div');
-        card.className = 'card bg-base-100 w-full shadow-sm border-t-4 border-green-500';
+        card.className = `card bg-base-100 w-full shadow-sm border-t-4 ${issue.status === 'open' ? 'border-green-500' : 'border-purple-500'}`;
+
+        // status image
+        const statusImage = issue.status === 'open'
+            ? '<img src="assets/Open-Status.png" alt="">'
+            : '<img src="assets/Closed- Status .png" alt="">';
 
         // Set priority badge classes dynamically
         let priorityClass = '';
@@ -60,7 +80,7 @@ function displayIssues(issues) {
         card.innerHTML = `
         <div class="flex justify-between px-6 mt-4">
                         <div>
-                            <img src="assets/Open-Status.png" alt="">
+                            ${statusImage}
                         </div>
                         <div class="badge badge-soft ${priorityClass} rounded-2xl">${issue.priority.toUpperCase()}</div>
                     </div>
