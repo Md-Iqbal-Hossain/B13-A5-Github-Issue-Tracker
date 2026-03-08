@@ -11,6 +11,9 @@ const loadingSpinner = document.getElementById("loadingSpinner");
 
 const issueCount = document.getElementById("issueCount");
 
+const searchInput = document.getElementById("searchInput");
+const newIssueBtn = document.getElementById("newIssueBtn");
+
 function switchTab(tab) {
     // console.log(tab);
     const tabs = ['all', 'open', 'closed'];
@@ -241,6 +244,25 @@ function showIssueModal(issue) {
 
     document.getElementById("issue_detail_modal").showModal();
 }
+
+async function searchIssues(searchText) {
+    showLoading();
+    const res = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchText}`);
+    const data = await res.json();
+    const issues = data.data;
+    hideLoading();
+    displayIssues(issues);
+}
+
+newIssueBtn.addEventListener("click", () => {
+    const searchText = searchInput.value.trim();
+    if (searchText === "") {
+        displayIssues(allIssues);
+    }
+    else {
+        searchIssues(searchText);
+    }
+});
 
 switchTab(currentTab);
 loadIssues()
