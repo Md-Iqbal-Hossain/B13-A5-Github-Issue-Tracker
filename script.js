@@ -15,7 +15,6 @@ const searchInput = document.getElementById("searchInput");
 const newIssueBtn = document.getElementById("newIssueBtn");
 
 function switchTab(tab) {
-    // console.log(tab);
     const tabs = ['all', 'open', 'closed'];
 
     for (const t of tabs) {
@@ -30,7 +29,6 @@ function switchTab(tab) {
         }
     }
 
-    // filter issues
     showLoading();
 
     setTimeout(() => {
@@ -72,7 +70,6 @@ async function loadIssues() {
 function displayIssues(issues) {
     issuesContainer.innerHTML = '';
 
-    // update stat bar count
     issueCount.innerText = `${issues.length} Issues`;
 
     issues.forEach(issue => {
@@ -81,12 +78,10 @@ function displayIssues(issues) {
         card.onclick = () => loadIssueDetails(issue.id);
         card.className = `cursor-pointer card bg-base-100 w-full shadow-sm border-t-4 ${issue.status === 'open' ? 'border-green-500' : 'border-purple-500'}`;
 
-        // status image
         const statusImage = issue.status === 'open'
             ? '<img src="assets/Open-Status.png" alt="">'
             : '<img src="assets/Closed- Status .png" alt="">';
 
-        // Set priority badge classes dynamically
         let priorityClass = '';
         if (issue.priority.toLowerCase() === 'high') {
             priorityClass = 'bg-red-100 text-red-600';
@@ -96,7 +91,6 @@ function displayIssues(issues) {
             priorityClass = 'bg-gray-100 text-gray-500';
         }
 
-        // label colors
         const labelColors = {
             'bug': 'bg-red-100 text-red-600 border-1 border-red-300',
             'help wanted': 'bg-yellow-100 text-yellow-600 border-1 border-yellow-300',
@@ -105,7 +99,6 @@ function displayIssues(issues) {
             'enhancement': 'bg-green-100 text-green-600 border-1 border-green-300'
         };
 
-        // format date
         const dateObj = new Date(issue.createdAt);
         const formattedDate = `${dateObj.getMonth() + 1}/${dateObj.getDate()}/${dateObj.getFullYear()}`;
 
@@ -146,8 +139,6 @@ function displayIssues(issues) {
                         <p class="text-[#64748B]">${formattedDate}</p>
                     </div>`;
         issuesContainer.appendChild(card);
-
-
     })
 }
 
